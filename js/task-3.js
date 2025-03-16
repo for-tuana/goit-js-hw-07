@@ -1,4 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
+//   const nameInput = document.querySelector("#name-input");
+//   const nameOutput = document.querySelector("#name-output");
+
+//   nameInput.addEventListener("input", () => {
+//     const trimmedValue = nameInput.value.trim();
+//     nameOutput.textContent = trimmedValue ? trimmedValue : "Anonymous";
+//   });
+// });
+
+function initTask() {
   const nameInput = document.querySelector("#name-input");
   const nameOutput = document.querySelector("#name-output");
 
@@ -6,4 +16,4 @@ document.addEventListener("DOMContentLoaded", () => {
     const trimmedValue = nameInput.value.trim();
     nameOutput.textContent = trimmedValue ? trimmedValue : "Anonymous";
   });
-});
+}

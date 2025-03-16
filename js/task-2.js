@@ -1,5 +1,11 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initTask() {
   const gallery = document.querySelector(".gallery");
+
+  // Check if the gallery element exists
+  if (!gallery) {
+    console.error("Gallery element not found");
+    return;
+  }
 
   gallery.style.display = "flex";
   gallery.style.gap = "10px";
@@ -9,8 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <img src="${image.url}" alt="${image.alt}" style="width: 300px; height: auto; display: block; border-radius: 8px;">
     </li>
   `).join("");
-});
-
+}
 
 const images = [
   {
@@ -26,4 +31,6 @@ const images = [
     alt: "Group of Horses Running",
   },
 ];
+
+
 

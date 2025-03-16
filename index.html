@@ -12,7 +12,18 @@
     <script src="js/task-6.js"></script>
 </head>
 <body>
-    <ul id="categories">
+    
+    <div id="taskContent">Choose a task below</div>
+
+    <button onclick="loadTask('task1', 'js/task-1.js')">Task 1</button>
+    <button onclick="loadTask('task2', 'js/task-2.js')">Task 2</button>
+    <button onclick="loadTask('task3', 'js/task-3.js')">Task 3</button>
+    <button onclick="loadTask('task4', 'js/task-4.js')">Task 4</button>
+    <button onclick="loadTask('task5', 'js/task-5.js')">Task 5</button>
+    <button onclick="loadTask('task6', 'js/task-6.js')">Task 6</button>
+
+    <template id="task1">
+         <ul id="categories">
         <li class="item">
             <h2>Animals</h2>
             <ul>
@@ -41,11 +52,20 @@
             </ul>
         </li>
     </ul>
+    </template>
 
-    <ul class="gallery"></ul>
 
-    <input type="text" id="name-input" placeholder="Please enter your name" />
+    <template id="task2">
+        <ul class="gallery"></ul>
+    </template>
+
+    <template id="task3">
+        <input type="text" id="name-input" placeholder="Please enter your name" />
     <h1>Hello, <span id="name-output">Anonymous</span>!</h1>
+    </template>
+
+    <template id="task4">
+     
 
     <form class="login-form">
         <label>
@@ -58,19 +78,58 @@
         </label>
         <button type="submit">Log in</button>
     </form>
+    </template>
 
-    <div class="widget">
+    <template id="task5">
+           <div class="widget">
         <p>Background color: <span class="color">-</span></p>
         <button type="button" class="change-color">Change color</button>
     </div>
+    </template>
 
-    <div id="controls">
+    <template id="task6">
+        <div id="controls">
         <input type="number" min="1" max="100" step="1" />
         <button type="button" data-create>Create</button>
         <button type="button" data-destroy>Destroy</button>
     </div>
     
     <div id="boxes"></div>
+    </template>
+
+     <script>
+        let currentScript = null;
+
+        function loadTask(taskId, scriptPath) {
+            
+            const template = document.getElementById(taskId);
+            if (template) {
+                document.getElementById("taskContent").innerHTML = template.innerHTML;
+            }
+
+            
+            if (currentScript) {
+                document.body.removeChild(currentScript);
+                currentScript = null;
+            }
+
+            
+            const script = document.createElement("script");
+            script.src = scriptPath;
+            script.onload = () => {
+                console.log(`${scriptPath} yüklendi.`);
+                
+                if (typeof initTask === "function") {
+                    initTask(); 
+                }
+            };
+            document.body.appendChild(script);
+            currentScript = script;
+        }
+    </script>
+
+
+  
 
 </body>
 </html>
